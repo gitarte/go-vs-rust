@@ -37,17 +37,20 @@ go version
 #### Ad. 2: Inicjalizacja projektu
 ```bash
 mkdir challenge
-```
-#### Ad. 3: Implementacja prostego serwisu HTTP
-```bash
 cd challenge/
 go mod init challenge
 ```
-#### Ad. 4: Pobranie i instalacja wymaganych bibliotek 
+#### Ad. 3: Implementacja prostego serwisu HTTP
 ```bash
-# Nie ma potrzeby. 
-# Kompilator sam pobiera biblioteki na podstawie definicji w sekcji "import" w kodzie źródłowym. 
-# Informację o pobranych bibliotekach można znaleźć w pliku "go.mod"
+
+```
+#### Ad. 4: Pobranie i instalacja wymaganych bibliotek 
+Nie ma potrzeby. 
+
+Kompilator sam pobiera biblioteki na podstawie definicji w sekcji "import" w kodzie źródłowym. 
+
+Informację o pobranych bibliotekach można znaleźć w pliku "go.mod"
+```bash
 cat go.mod
 ```
 #### Ad. 5: Kompilacja lokalna
@@ -55,11 +58,6 @@ cat go.mod
 go build -o challenge main.go
 ```
 #### Ad. 6: Cross-kompilacja
-Jeśli chcesz poznać wszystkie dostępne platformy i architektury, na które mozna kompilować kod Go odpal komendę
-```bash
-go tool dist list
-```
-Cross-kompilacja wg założeń wyzwania:
 ```bash
 # Raspberry PI
 GOOS=linux   GOARCH=arm GOARM=5 go build -o challenge_raspberry_arm5 main.go
