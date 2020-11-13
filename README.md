@@ -2,7 +2,7 @@
 Celem niniejszego wyzwania jest porównanie sprawności języków Go i Rust w dziedzinie tworzenia aplikacji HTTP. 
 Wyzwanie z pozoru nie jest sprawidliwe, albowiem nie jest to główne przeznczenie języka Rust, jednak wielu twierdzi, że tego typu implementacje są proste w realizacji przy zastosowaniu odpowiedniego framework'a. Poza tym, jeżeli można takie rzeczy robić w C++, to dlaczego nie w rzeczoonym Rust skoro pretenduje on do miana następcy jeyka C++.
 Zadanie polega na wykonaniu i udokumentowaniu następujących punktów:
-1. Instalacja języka na komputerze programisty
+1. Instalacja języka (kompilator i wszystkie potrzebne narzędzia) na komputerze programisty
 2. Inicjalizacja projektu
 3. Implementacja prostego serwisu HTTP, który zawiera:
 - URL publiczny: `/`
@@ -28,27 +28,51 @@ Można wybrać dowolną platofrmę, wugodną dla osoby implementującej, lecz w 
 Realizowane w systemie operacyjnym Debian Buster
 #### Ad. 1: Instalacja języka na komputerze programisty
 ```bash
-TODO
+wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+echo 'PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+source  ~/.bashrc
+go version
 ```
 #### Ad. 2: Inicjalizacja projektu
 ```bash
-TODO
+mkdir challenge
 ```
 #### Ad. 3: Implementacja prostego serwisu HTTP
 ```bash
-TODO
+cd challenge/
+go mod init challenge
 ```
 #### Ad. 4: Pobranie i instalacja wymaganych bibliotek 
 ```bash
-TODO
+# Nie ma potrzeby. 
+# Kompilator sam pobiera biblioteki na podstawie definicji w sekcji "import" w kodzie źródłowym. 
+# Informację o pobranych bibliotekach można znaleźć w pliku "go.mod"
+cat go.mod
 ```
 #### Ad. 5: Kompilacja lokalna
 ```bash
-TODO
+go build -o challenge main.go
 ```
-#### Ad. 6: Crosskompilacja do nastęopujących architektur
+#### Ad. 6: Cross-kompilacja
+Jeśli chcesz poznać wszystkie dostępne platformy i architektury, na które mozna kompilować kod Go odpal komendę
 ```bash
-TODO
+go tool dist list
+```
+Cross-kompilacja wg założeń wyzwania:
+```bash
+# Raspberry PI
+GOOS=linux   GOARCH=arm GOARM=5 go build -o challenge_raspberry_arm5 main.go
+
+# Linux amd64
+GOOS=linux   GOARCH=amd64 go build -o challenge_linux_amd64 main.go
+
+# MacOS amd64
+GOOS=darwin  GOARCH=amd64 go build -o challenge_darwin_amd64 main.go
+
+# Windows
+GOOS=windows GOARCH=amd64 go build -o challenge_win_amd64 main.go
+GOOS=windows GOARCH=386   go build -o challenge_win_amd64 main.go
 ```
 
 ### Rust (todo)
@@ -73,7 +97,7 @@ TODO
 ```bash
 TODO
 ```
-#### Ad. 6: Crosskompilacja do nastęopujących architektur
+#### Ad. 6: Cross-kompilacja
 ```bash
 TODO
 ```
