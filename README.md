@@ -46,10 +46,8 @@ go mod init challenge
 ```
 #### Ad. 4: Pobranie i instalacja wymaganych bibliotek 
 Nie ma potrzeby. 
-
 Kompilator sam pobiera biblioteki na podstawie definicji w sekcji "import" w kodzie źródłowym. 
-
-Informację o pobranych bibliotekach można znaleźć w pliku "go.mod"
+Informację o pobranych bibliotekach można znaleźć w pliku `go.mod`
 ```bash
 cat go.mod
 ```
@@ -63,14 +61,14 @@ go build -o challenge main.go
 GOOS=linux   GOARCH=arm GOARM=5 go build -o challenge_raspberry_arm5 main.go
 
 # Linux amd64
-GOOS=linux   GOARCH=amd64 go build -o challenge_linux_amd64 main.go
+GOOS=linux   GOARCH=amd64 go build -o challenge_linux_amd64  main.go
 
 # MacOS amd64
 GOOS=darwin  GOARCH=amd64 go build -o challenge_darwin_amd64 main.go
 
 # Windows
+GOOS=windows GOARCH=386   go build -o challenge_win_i386  main.go
 GOOS=windows GOARCH=amd64 go build -o challenge_win_amd64 main.go
-GOOS=windows GOARCH=386   go build -o challenge_win_amd64 main.go
 ```
 
 ### Rust (todo)
